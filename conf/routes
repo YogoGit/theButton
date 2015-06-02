@@ -10,6 +10,3 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 
 GET     /foo                        controllers.Application.index()
-
-
-GET     /test                       controllers.Application.index()
