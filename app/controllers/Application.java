@@ -8,7 +8,7 @@ import views.html.*;
 public class Application extends Controller {
 
     public static Result index() {
-        return ok(index.render("Herro world"));
+        return ok(index.render("HERRO, WORLD"));
     }
 
 }
