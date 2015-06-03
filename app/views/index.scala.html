@@ -1,7 +1,11 @@
 @(message: String)
 
-@main("Welcome to Play") {
+@main("This is the tab headder") {
+    @message.toUpperCase
 
-    @play20.welcome(message.toUpperCase, style = "Java")
+    @helper.form(action = routes.Application.addTask()) {
+        <input name="contents"/>
+        <input type="submit"/>
+    }
 
 }
