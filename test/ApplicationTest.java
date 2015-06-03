@@ -36,8 +36,7 @@ public class ApplicationTest {
 
     @Test
     public void renderTemplate() {
-        Content html = views.html.index.render("HERRO, WORLD");
-        assertThat(contentType(html)).isEqualTo("text/html");
+        Content html = views.html.index.render("HERRO, WORLD", play.data.Form.form(models.Task.class));        assertThat(contentType(html)).isEqualTo("text/html");
         assertThat(contentAsString(html)).contains("HERRO, WORLD");
     }
 
