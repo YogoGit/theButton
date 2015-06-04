@@ -3,8 +3,6 @@
 
 @main("Welcome to Play 2.0") {
 
-<ul id="tasks"></ul>
-
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container-fluid">
@@ -14,6 +12,8 @@
     </div>
 
     <div class="container">
+        <ul id="tasks"></ul>
+
         @helper.form(action = routes.Application.addTask(), 'class -> "well form-horizontal") {
             @helper.inputText(taskForm("contents"), '_label -> "Contents")
             <div class="controls">
