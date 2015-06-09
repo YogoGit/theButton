@@ -6,15 +6,19 @@ import play.mvc.*;
 import views.html.*;
 
 public class Application extends Controller {
+    private static final String nav1 = "tutorial";
+    private static final String nav2 = "the button";
+
 
     public static Result index() {
-        return ok(index.render("herro, world", play.data.Form.form(models.Task.class)));
+        String title = nav1;
+        return ok(index.render(title,nav1, nav2, play.data.Form.form(models.Task.class)));
     }
 
     public static Result addTask() {
         play.data.Form<models.Task> form = play.data.Form.form(models.Task.class).bindFromRequest();
         if (form.hasErrors()) {
-            return badRequest(index.render("hello, world", form));
+            return badRequest(index.render("hello, world", nav1, nav2, form));
         }
         else {
             models.Task task = form.get();
@@ -26,6 +30,11 @@ public class Application extends Controller {
     public static Result getTasks() {
         java.util.List<models.Task> tasks = new play.db.ebean.Model.Finder(String.class, models.Task.class).all();
         return ok(play.libs.Json.toJson(tasks));
+    }
+
+    public static Result theButton(){
+        String title = nav2;
+        return ok(theButton.render(title, nav1, nav2));
     }
 
 }

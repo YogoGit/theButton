@@ -1,16 +1,7 @@
-@(message: String, taskForm: Form[Task])
+@(title: String, nav1: String, nav2: String, taskForm: Form[Task])
 @implicitFieldConstructor = @{ helper.FieldConstructor(twitterBootstrapInput.render) }
 
-@main("Welcome to Play 2.0") {
-
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <a id="titleLink" class="brand" href="/">@message.toUpperCase</a>
-            </div>
-        </div>
-    </div>
-
+@navBar(title, nav1, nav2) {
     <div class="container">
         <ul id="tasks"></ul>
 
