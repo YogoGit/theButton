@@ -1,0 +1,15 @@
+@(title: String, nav1: String, nav2: String)(body: Html)
+@implicitFieldConstructor = @{ helper.FieldConstructor(twitterBootstrapInput.render) }
+
+
+@main(title){
+  <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a id="titleLink" class="brand" href="/">@title.toUpperCase</a>
+            </div>
+        </div>
+  </div>
+
+  @body
+}

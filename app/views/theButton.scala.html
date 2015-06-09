@@ -1,0 +1,12 @@
+@(title: String, nav1: String, nav2: String)
+@implicitFieldConstructor = @{ helper.FieldConstructor(twitterBootstrapInput.render) }
+
+@navBar(title, nav1, nav2) {
+    <div class="container">
+        <ul id="tasks"></ul>
+            <div class="controls">
+                <input type="submit" class="btn btn-primary"/>
+            </div>
+    </div>
+
+}
