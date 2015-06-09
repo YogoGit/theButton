@@ -10,7 +10,7 @@ GET     /                           controllers.Application.index()
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 #adds route http://localhost:9000/task
-GET     /foo                        controllers.Application.index()
+GET     /theButton                       controllers.Application.theButton()
 
 
 POST    /task                       controllers.Application.addTask()
