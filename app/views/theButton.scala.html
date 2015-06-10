@@ -1,7 +1,7 @@
-@(title: String, nav1: String, nav2: String)
+@(nav1: String, nav2: String)
 @implicitFieldConstructor = @{ helper.FieldConstructor(twitterBootstrapInput.render) }
 
-@navBar(title, nav1, nav2) {
+@navBar("The Button", nav1, nav2) {
     <div class="clock" style="margin:2em;"></div>
     <div class="container">
             <div class="controls">
@@ -13,7 +13,7 @@
 
         $(document).ready(function() {
 
-            // Instantiate a counter
+            // Instantiate a counter, figure out how to do dynamic stuff with reseting the clock for everyone
             clock = new FlipClock($('.clock'), 600, {
                 clockFace: 'Counter',
                 autoStart: true,

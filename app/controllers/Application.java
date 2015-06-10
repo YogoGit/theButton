@@ -13,23 +13,22 @@ public class Application extends Controller {
 
     public static Result login(){
         session("connected", "user@gmail.com");
-        return ok("");
-
+        return ok(login.render());
     }
-    public static Result index() {
-        String title = nav1;
-        return ok(index.render(title,nav1, nav2, play.data.Form.form(models.Task.class)));
+
+    public static Result torial() {
+        return ok(torial.render(nav1, nav2, play.data.Form.form(models.Task.class)));
     }
 
     public static Result addTask() {
         play.data.Form<models.Task> form = play.data.Form.form(models.Task.class).bindFromRequest();
         if (form.hasErrors()) {
-            return badRequest(index.render(nav1, nav1, nav2, form));
+            return badRequest(torial.render(nav1, nav2, form));
         }
         else {
             models.Task task = form.get();
             task.save();
-            return redirect(routes.Application.index());
+            return redirect(routes.Application.torial());
         }
     }
 
@@ -40,7 +39,7 @@ public class Application extends Controller {
 
     public static Result theButton(){
         String title = nav2;
-        return ok(theButton.render(title, nav1, nav2));
+        return ok(theButton.render(nav1, nav2));
     }
 
 }
