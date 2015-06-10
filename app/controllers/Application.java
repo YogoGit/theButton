@@ -5,11 +5,17 @@ import play.mvc.*;
 
 import views.html.*;
 
+// Here I will annotate a spring controller.
+
 public class Application extends Controller {
     private static final String nav1 = "tutorial";
     private static final String nav2 = "the button";
 
+    public static Result login(){
+        session("connected", "user@gmail.com");
+        return ok("");
 
+    }
     public static Result index() {
         String title = nav1;
         return ok(index.render(title,nav1, nav2, play.data.Form.form(models.Task.class)));
@@ -18,7 +24,7 @@ public class Application extends Controller {
     public static Result addTask() {
         play.data.Form<models.Task> form = play.data.Form.form(models.Task.class).bindFromRequest();
         if (form.hasErrors()) {
-            return badRequest(index.render("hello, world", nav1, nav2, form));
+            return badRequest(index.render(nav1, nav1, nav2, form));
         }
         else {
             models.Task task = form.get();
