@@ -3,7 +3,8 @@
 # ~~~~
 
 #Home Page
-GET     /                           controllers.Application.login()
+GET     /                           controllers.Login.get()
+POST    /                           controllers.Login.post()
 
 
 # Map static resources from the /public folder to the /assets URL path
