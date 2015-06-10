@@ -14,12 +14,15 @@
        <div class="account-wall">
         @helper.form(action = routes.Login.post, 'id -> "login-form", 'role -> "form", 'class -> "form-horizontal") {
 
-        <!--  add input helpers from borrower login -->
+        <!-- input helpers, the email and password fields which use the passed in form class and play helpers-->
            <div class="panel-body">
                       @helper.inputText(field = form("email"), '_label -> "Email")
                       @helper.inputPassword(field = form("password"), '_label -> "Password")
             </div>
-            <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+            <div class submit-button>
+            <button class="btn btn-primary" type="submit">Sign in</button>
+            </div>
+
             <label class="checkbox pull-left"> <input type="checkbox"
               value="remember-me"> Remember me
             </label>
