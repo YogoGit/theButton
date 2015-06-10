@@ -2,17 +2,19 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
-GET     /                           controllers.Application.index()
+#Home Page
+GET     /                           controllers.Application.login()
 
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
-#adds route http://localhost:9000/task
+#The Button Page
 GET     /theButton                       controllers.Application.theButton()
 
+# Tutorial Page
+GET     /2torial                           controllers.Application.torial()
 
+#adds route http://localhost:9000/task
 POST    /task                       controllers.Application.addTask()
-
 GET    /tasks                       controllers.Application.getTasks()
