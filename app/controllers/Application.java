@@ -11,11 +11,6 @@ public class Application extends Controller {
     private static final String nav1 = "tutorial";
     private static final String nav2 = "the button";
 
-    public static Result login(){
-        session("connected", "user@gmail.com");
-        return ok(login.render());
-    }
-
     public static Result torial() {
         return ok(torial.render(nav1, nav2, play.data.Form.form(models.Task.class)));
     }
@@ -37,7 +32,7 @@ public class Application extends Controller {
         return ok(play.libs.Json.toJson(tasks));
     }
 
-    public static Result theButton(){
+    public static Result theButton() {
         String title = nav2;
         return ok(theButton.render(nav1, nav2));
     }
