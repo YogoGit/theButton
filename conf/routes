@@ -3,19 +3,22 @@
 # ~~~~
 
 #Home Page
-GET     /                           controllers.Login.get()
-POST    /                           controllers.Login.post()
+GET     /                           controllers.Login.login()
+POST    /                           controllers.Login.authenticate()
 
-
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+#creating an account
+GET     /createAccount              controllers.CreateAccount.add()
+POST    /createAccount/User         controllers.CreateAccount.addUser()
 
 #The Button Page
-GET     /theButton                       controllers.Application.theButton()
+GET     /theButton                  controllers.Application.theButton()
 
 # Tutorial Page
-GET     /2torial                           controllers.Application.torial()
+GET     /2torial                    controllers.Application.torial()
 
 #adds route http://localhost:9000/task
 POST    /task                       controllers.Application.addTask()
 GET    /tasks                       controllers.Application.getTasks()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
