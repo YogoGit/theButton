@@ -1,10 +1,10 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
+import play.mvc.Controller;
+import play.mvc.Result;
 
-import views.html.*;
-
+import views.html.torial;
+import views.html.theButton;
 // Here I will annotate a spring controller.
 
 public class Application extends Controller {
