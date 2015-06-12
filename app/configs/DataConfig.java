@@ -32,11 +32,11 @@ public class DataConfig {
         entityManagerFactory.setPackagesToScan("models");
         entityManagerFactory.setJpaVendorAdapter(vendorAdapter);
         entityManagerFactory.setDataSource(dataSource());
-        entityManagerFactory.setJpaPropertyMap(new HashMap<String, String>() {{
-                // create-drop can be changed to something else
-                put("hibernate.hbm2ddl.auto", "create-drop");
-            }
-        });
+//        entityManagerFactory.setJpaPropertyMap(new HashMap<String, String>() {{
+//                // create-drop can be changed to something else
+//                put("hibernate.hbm2ddl.auto", "create-drop");
+//            }
+//        });
         entityManagerFactory.afterPropertiesSet();
         return entityManagerFactory.getObject();
     }
