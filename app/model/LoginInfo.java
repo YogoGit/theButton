@@ -4,11 +4,11 @@ import play.data.validation.Constraints.Required;
 import play.data.validation.Constraints.MaxLength;
 
 public class LoginInfo {
-    @Required(message="Requires username To Login. Try Again.")
+    @Required(message="Required")
     @MaxLength(value = 255)
     private String username;
 
-    @Required(message="Requires Email To Login. Try Again.")
+    @Required(message="Required")
     @MaxLength(value = 255)
     private String email;
 
