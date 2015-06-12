@@ -1,18 +1,30 @@
 package model;
 
-import play.data.validation.Constraints;
+import play.data.validation.Constraints.Required;
 import play.data.validation.Constraints.MaxLength;
 
 public class LoginInfo {
-    @Constraints.Required(message="Requires Input To Login. Try Again.")
+    @Required(message="Requires username To Login. Try Again.")
     @MaxLength(value = 255)
-    private String loginName;
+    private String username;
 
-    public String getLoginName() {
-        return loginName;
+    @Required(message="Requires Email To Login. Try Again.")
+    @MaxLength(value = 255)
+    private String email;
+
+    public String getEmail() {
+        return email;
     }
 
-    public void setLoginName(String input) {
-        this.loginName = input;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String input) {
+        this.username = input;
     }
 }

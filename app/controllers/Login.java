@@ -3,8 +3,6 @@ package controllers;
 import model.User;
 import model.LoginInfo;
 
-import models.LoginForm;
-
 import services.UserService;
 
 import views.html.login;
@@ -23,14 +21,19 @@ public class Login extends Controller {
 
     public static Result login() {
         //session("connected", "user@gmail.com");
-        return ok(login.render("", Form.form(LoginForm.class)));
+        return ok(login.render("", Form.form(LoginInfo.class)));
     }
 
     public static Result authenticate() {
         // I want to post this to the Auth controller
-        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+        Form<LoginInfo> form = Form.form(LoginInfo.class).bindFromRequest();
 
-        return ok(login.render("POOOOOOOSSSSSSSSTTTTTTTTEEEEEEDDDDDDDDDDDDDDDDDDDDDD", Form.form(LoginForm.class)));
+        if (form.hasErrors()) {
+            return badRequest(login.render("", form));
+        } else {
+        return ok(login.render("POOOOOOOSSSSSSSSTTTTTTTTEEEEEEDDDDDDDDDDDDDDDDDDDDDD", Form.form(LoginInfo.class)));
+
+        }
     }
 
     public String validate() {

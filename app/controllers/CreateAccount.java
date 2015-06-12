@@ -15,26 +15,31 @@ import services.UserService;
 
 import views.html.createAccount;
 
-
-public class CreateAccount extends Controller{
+@org.springframework.stereotype.Controller
+public class CreateAccount extends Controller {
 
     @Autowired
-    private static UserService userService;
+    private UserService userService;
 
     public static Result add() {
-        return ok(createAccount.render("Adding User", Form.form(User.class)));
+        return ok(createAccount.render(Form.form(User.class)));
     }
 
     public static Result addUser() {
+        //I dont know what this is
         Form<User> form = Form.form(User.class).bindFromRequest();
-
+        if (form.hasErrors()) {
+            return badRequest(createAccount.render(form));
+        }
+        // i dont know what this does
         User user = form.get();
-        if (userService.checkUsername(user.getUser())) {
-           userService.addUser(user);
+//        if (userService.checkUsername(user.getUsername())) {
+          if (true){
+//           userService.addUser(user);
            return redirect(controllers.routes.Login.login());
         }
 
-        return badRequest(createAccount.render("Bad Request", form));
+        return badRequest(createAccount.render(form));
     }
 
 }

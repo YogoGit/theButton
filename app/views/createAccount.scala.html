@@ -1,17 +1,17 @@
-@(message: String, form: play.data.Form[model.User])
+@(form: play.data.Form[model.User])
 @implicitFieldConstructor = @{ helper.FieldConstructor(twitterBootstrapInput.render) }
 
-@message
+
 @main("Create Account") {
 
     <div class="container">
 
         @helper.form(action = routes.CreateAccount.addUser(), 'class -> "well form-horizontal") {
             @helper.inputText(form("user"),'_label -> "Username")
-             @helper.inputText(form("firstName"),'_label -> "First Name")
-              @helper.inputText(form("lastName"),'_label -> "Last Name")
+               @helper.inputText(form("email"),'_label -> "Email")
+
             <div class="controls">
-                <input type="submit" class="btn btn-primary" value="Create User"/>
+                <input type="submit" class="btn btn-primary" value="Create"/>
             </div>
         }
     </div>

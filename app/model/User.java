@@ -1,6 +1,6 @@
 package model;
 
-import play.data.validation.Constraints;
+import play.data.validation.Constraints.Required;
 import play.data.validation.Constraints.MaxLength;
 
 public class User {
@@ -9,35 +9,25 @@ public class User {
     @MaxLength(value = 255)
     private String user;
 
-    @Constraints.Required(message="First Name Is Required")
+    @Required(message="Email is Required")
     @MaxLength(value = 255)
-    private String firstName;
+    private String email;
 
-    @Constraints.Required(message="Last Name Is Required")
-    @MaxLength(value = 255)
-    private String lastName;
 
-    public String getUser() {
+    public String getUsername() {
         return user;
     }
 
-    public void setUser(String user) {
+    public void setUsername(String user) {
         this.user = user;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 }

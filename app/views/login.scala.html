@@ -1,4 +1,4 @@
-@(posted: String="",form: Form[LoginForm])
+@(posted: String="",form:  play.data.Form[model.LoginInfo])
 
 @import helper.inputText
 @import helper.inputPassword
@@ -17,7 +17,6 @@
         <!-- input helpers, the email and password fields which use the passed in form class and play helpers-->
            <div class="panel-body">
                       @helper.inputText(field = form("email"), '_label -> "Email", 'class -> ".form-signin inputText")
-                      @helper.inputPassword(field = form("password"), '_label -> "Password", 'class -> ".form-signin inputPass")
             </div>
             <div class= "submit-button">
             <button class="btn btn-primary" type="submit">Sign in</button>
