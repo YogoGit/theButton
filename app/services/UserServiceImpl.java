@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     // this is an interface used to interact with the persistence context
@@ -23,21 +24,26 @@ public class UserServiceImpl implements UserService {
     public void addUser(User user) {
         UserInfo newUser = new UserInfo();
         newUser.setUsername(user.getUsername());
-        newUser.setEmail(user.getUsername());
+        newUser.setEmail(user.getEmail());
         em.persist(newUser);
         return;
     }
 
     @Override
     public boolean checkUsernameExists(String username) {
-        UserInfo ui = em.createQuery("SELECT a FROM UserInfo a WHERE a.user_name = :username", UserInfo.class)
-                         .setParameter("username", username)
-                         .getSingleResult();
-        return (ui != null);
+        // i need to find a method to return if a result is null. (!.getSingleResult())
+//        UserInfo ui = em.createQuery("SELECT a FROM UserInfo a WHERE a.username = :username", UserInfo.class)
+//                         .setParameter("username", username)
+//                         .getSingleResult();
+//        return (ui != null);
+        List<UserInfo> ui = em.createQuery("SELECT a FROM UserInfo a WHERE a.username = :username", UserInfo.class)
+                              .setParameter("username", username)
+                              .getResultList();
+        return (ui.size() >= 1);
     }
 
     @Override
-    public boolean checkEmailExists(String email){
+    public boolean checkEmailExists(String email) {
         return false;
     }
 

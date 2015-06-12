@@ -16,4 +16,9 @@ public class Global extends GlobalSettings {
     public void onStart(Application app) {
         appContext = new AnnotationConfigApplicationContext(AppConfig.class, DataConfig.class);
     }
+
+    @Override
+    public <A> A getControllerInstance(Class<A> clazz) {
+        return appContext.getBean(clazz);
+    }
 }

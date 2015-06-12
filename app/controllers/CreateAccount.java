@@ -1,43 +1,49 @@
 package controllers;
 
-import model.LoginInfo;
+import services.UserService;
+import views.html.createAccount;
+
 import model.User;
 
-
-import play.data.Form;
-import play.libs.Json;
-import play.mvc.Controller;
-import play.mvc.Result;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import services.UserService;
-
-import views.html.createAccount;
+import play.data.Form;
+import play.mvc.Controller;
+import play.mvc.Result;
 
 @org.springframework.stereotype.Controller
 public class CreateAccount extends Controller {
 
+    private static final Logger log = LoggerFactory.getLogger(CreateAccount.class);
+
     @Autowired
     private UserService userService;
 
-    public static Result add() {
+    public Result add() {
         return ok(createAccount.render(Form.form(User.class)));
     }
 
-    public static Result addUser() {
-        //I dont know what this is
+    public Result addUser() {
+        // I don't know what this is
+        log.info("something");
+
         Form<User> form = Form.form(User.class).bindFromRequest();
         if (form.hasErrors()) {
+            log.info("form has errors");
+
             return badRequest(createAccount.render(form));
         }
         User user = form.get();
-//        if (userService.checkUsername(user.getUsername())) {
-          if (true){
-//           userService.addUser(user);
-           return redirect(controllers.routes.Login.login());
+        if (!userService.checkUsernameExists(user.getUsername())) {
+//          if (true){
+            log.info("username {} does not exist, adding {}", user.getUsername(), user.getUsername());
+            userService.addUser(user);
+            return redirect(controllers.routes.Login.login());
         }
-
+        log.info("username {} does exist, can't create account", user.getUsername());
         return badRequest(createAccount.render(form));
     }
 
