@@ -9,18 +9,22 @@ create table task (
   constraint pk_task primary key (id))
 ;
 
-create sequence task_seq;
+create table user (
+  username                  varchar(255) not null,
+  email                     varchar(255),
+  constraint pk_user primary key (username))
+;
 
 
 
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
+SET FOREIGN_KEY_CHECKS=0;
 
-drop table if exists task;
+drop table task;
 
-SET REFERENTIAL_INTEGRITY TRUE;
+drop table user;
 
-drop sequence if exists task_seq;
+SET FOREIGN_KEY_CHECKS=1;
 
