@@ -3,8 +3,8 @@
 # ~~~~
 
 #Home Page                          if there is something inject, the route needs a @
-GET     /                           controllers.Login.login()
-POST    /                           controllers.Login.authenticate()
+GET     /                           @controllers.Login.login()
+POST    /                           @controllers.Login.authenticate()
 
 #creating an account
 GET     /createAccount              @controllers.CreateAccount.add()

@@ -27,8 +27,7 @@ public class CreateAccount extends Controller {
     }
 
     public Result addUser() {
-        // I don't know what this is
-        log.info("something");
+        log.info("trying to add a new user");
 
         Form<User> form = Form.form(User.class).bindFromRequest();
         if (form.hasErrors()) {
@@ -43,6 +42,7 @@ public class CreateAccount extends Controller {
             userService.addUser(user);
             return redirect(controllers.routes.Login.login());
         }
+        //should display an error message that that account already exists
         log.info("username {} does exist, can't create account", user.getUsername());
         return badRequest(createAccount.render(form));
     }

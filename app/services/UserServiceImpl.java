@@ -16,7 +16,6 @@ import javax.persistence.PersistenceContext;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    // this is an interface used to interact with the persistence context
     @PersistenceContext
     private EntityManager em;
 
