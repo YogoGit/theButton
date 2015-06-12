@@ -5,9 +5,9 @@ import play.data.validation.Constraints.MaxLength;
 
 public class User {
 
-    @play.data.validation.Constraints.Required(message="Username is need to create a new account")
+    @Required(message="Username is need to create a new account")
     @MaxLength(value = 255)
-    private String user;
+    private String username;
 
     @Required(message="Email is Required")
     @MaxLength(value = 255)
@@ -15,11 +15,11 @@ public class User {
 
 
     public String getUsername() {
-        return user;
+        return username;
     }
 
     public void setUsername(String user) {
-        this.user = user;
+        this.username = username;
     }
 
     public String getEmail() {

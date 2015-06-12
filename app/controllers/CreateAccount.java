@@ -31,7 +31,6 @@ public class CreateAccount extends Controller {
         if (form.hasErrors()) {
             return badRequest(createAccount.render(form));
         }
-        // i dont know what this does
         User user = form.get();
 //        if (userService.checkUsername(user.getUsername())) {
           if (true){

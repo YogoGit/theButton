@@ -16,11 +16,21 @@ public class UserInfo {
     @Column(name="email")
     private String email;
 
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 
-    public String getEmail(){
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
         return email;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+
 }
