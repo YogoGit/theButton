@@ -18,10 +18,11 @@ import org.slf4j.LoggerFactory;
 public class Application extends Controller {
     private static final String nav1 = "tutorial";
     private static final String nav2 = "the button";
-    private static final Logger log = LoggerFactory.getLogger(Login.class);
+    private static final Logger log = LoggerFactory.getLogger(Application.class);
 
     public Result torial() {
-        if (checkUser()) {
+        String user = session("username");
+        if (user != null) {
             return ok(torial.render(nav1, nav2));
         } else {
             log.info("Trying to enter torial without verification");
@@ -30,20 +31,13 @@ public class Application extends Controller {
     }
 
     public Result theButton() {
-        if (checkUser()) {
-            log.info("User is authorized");
+        String user = session("username");
+        if (user != null) {
+            log.info("{} is authorized", user);
             return ok(theButton.render(nav1, nav2));
         } else {
             log.info("Trying to enter theButton without verification");
             return redirect(controllers.routes.Login.login());
         }
-
     }
-
-    private boolean checkUser() {
-        String user = session("username");
-        log.info("checking User. user = {}",user);
-        return (user != null);
-    }
-
 }
