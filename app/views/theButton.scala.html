@@ -5,22 +5,30 @@
     <div class="clock" style="margin:2em;"></div>
     <div class="container">
             <div class="controls">
-                <button type="button" class="btn btn-info btn-lg">The Button</button>
+                <button onclick="resetClock()" type="button" class="btn btn-info btn-lg">The Button</button>
             </div>
     </div>
     <script type="text/javascript">
         var clock;
+        var maxTime = 600;
+
+/*         document.getElementById('button').clicked == true) {
+            clock.setTime(600);
+            alert(button was clicked);
+          }; */
 
         $(document).ready(function() {
-
             // Instantiate a counter, figure out how to do dynamic stuff with reseting the clock for everyone
-            clock = new FlipClock($('.clock'), 600, {
+            clock = new FlipClock($('.clock'), maxTime, {
                 clockFace: 'Counter',
                 autoStart: true,
                 countdown: true
             });
-
         });
+
+        function resetClock() {
+            clock.setTime(600);
+            }
     </script>
 
 }
