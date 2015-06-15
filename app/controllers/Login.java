@@ -47,6 +47,7 @@ public class Login extends Controller {
             return redirect(controllers.routes.Application.theButton());
         }
         log.info("'{}' does not exist, should display an error to the user eventually", username);
+        form.reject("username","That username doesn't exist");
         return badRequest(login.render("", form));
     }
 
