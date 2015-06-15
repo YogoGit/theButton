@@ -15,7 +15,7 @@
   <logger name="play" level="INFO" />
   <logger name="application" level="INFO" />
   <logger name="onRequest" level="INFO" />
-  <logger name="workflow" level="INFO" />
+  <logger name="controllers.Application" level="DEBUG" />
 
   <root level="INFO">
     <appender-ref ref="STDOUT" />

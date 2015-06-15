@@ -16,7 +16,6 @@ import play.mvc.Result;
 
 @org.springframework.stereotype.Controller
 public class CreateAccount extends Controller {
-
     private static final Logger log = LoggerFactory.getLogger(CreateAccount.class);
 
     @Autowired
@@ -27,27 +26,21 @@ public class CreateAccount extends Controller {
     }
 
     public Result addUser() {
-        log.info("trying to add a new user");
-
+        log.debug("trying to add a new user");
         Form<User> form = Form.form(User.class).bindFromRequest();
         if (form.hasErrors()) {
-            log.info("form has errors");
-
+            log.debug("form has errors");
             return badRequest(createAccount.render(form));
         }
         User user = form.get();
-        if (!userService.checkUsernameExists(user.getUsername())) {
-//          if (true){
-            log.info("username {} does not exist, adding {}", user.getUsername(), user.getUsername());
-            session("username", user.getUsername());
-            userService.addUser(user);
-            return redirect(controllers.routes.Login.login());
+        if (userService.checkUsernameExists(user.getUsername())) {
+            log.info("username '{}' already exists, can't create account", user.getUsername());
+            form.reject("username","That username already exists, please enter a different username");
+            return badRequest(createAccount.render(form));
         }
-        //should display an error message that that account already exists
-        log.info("username '{}' already exists, can't create account", user.getUsername());
-        form.reject("username","please enter a unique username");
-        log.info("This is skipping form.reject for some reason");
-        return badRequest(createAccount.render(form));
+        log.info("adding {}", user.getUsername());
+        userService.addUser(user);
+        return redirect(controllers.routes.Login.login());
     }
 
 }

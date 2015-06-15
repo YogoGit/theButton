@@ -25,19 +25,16 @@ public class Login extends Controller {
     private UserService userService;
 
     public Result login() {
-        //session("connected", "user@gmail.com");
         log.info("someone entering the login page");
         session().clear();
-        return ok(login.render("", Form.form(LoginInfo.class)));
+        return ok(login.render(Form.form(LoginInfo.class)));
     }
 
     public Result authenticate() {
         log.info("checking authorization");
-        // I want to post this to the Auth controller
         Form<LoginInfo> form = Form.form(LoginInfo.class).bindFromRequest();
         if (form.hasErrors()) {
-            log.info("the errors are : {}", form.data());
-            return badRequest(login.render("", form));
+            return badRequest(login.render(form));
         }
         String username = form.get().getUsername();
         log.info("checking if '{}' exists", username);
@@ -46,13 +43,8 @@ public class Login extends Controller {
             session("username", username);
             return redirect(controllers.routes.Application.theButton());
         }
-        log.info("'{}' does not exist, should display an error to the user eventually", username);
+        log.info("'{}' does not exist", username);
         form.reject("username","That username doesn't exist");
-        return badRequest(login.render("", form));
-    }
-
-    public String validate() {
-
-        return "balls";
+        return badRequest(login.render(form));
     }
 }
