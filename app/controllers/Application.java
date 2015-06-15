@@ -31,7 +31,7 @@ public class Application extends Controller {
 
     public Result theButton() {
         if (checkUser()) {
-            log.info("Check user returned true");
+            log.info("User is authorized");
             return ok(theButton.render(nav1, nav2));
         } else {
             log.info("Trying to enter theButton without verification");
