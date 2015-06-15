@@ -39,11 +39,14 @@ public class CreateAccount extends Controller {
         if (!userService.checkUsernameExists(user.getUsername())) {
 //          if (true){
             log.info("username {} does not exist, adding {}", user.getUsername(), user.getUsername());
+            session("username", user.getUsername());
             userService.addUser(user);
             return redirect(controllers.routes.Login.login());
         }
         //should display an error message that that account already exists
-        log.info("username {} does exist, can't create account", user.getUsername());
+        log.info("username '{}' already exists, can't create account", user.getUsername());
+        form.reject("username","please enter a unique username");
+        log.info("This is skipping form.reject for some reason");
         return badRequest(createAccount.render(form));
     }
 
