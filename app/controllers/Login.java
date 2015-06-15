@@ -26,6 +26,8 @@ public class Login extends Controller {
 
     public Result login() {
         //session("connected", "user@gmail.com");
+        log.info("someone entering the login page");
+        session().clear();
         return ok(login.render("", Form.form(LoginInfo.class)));
     }
 

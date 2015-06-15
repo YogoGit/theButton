@@ -11,10 +11,10 @@ GET     /createAccount              @controllers.CreateAccount.add()
 POST    /createAccount/User         @controllers.CreateAccount.addUser()
 
 #The Button Page
-GET     /theButton                  controllers.Application.theButton()
+GET     /theButton                  @controllers.Application.theButton()
 
 # Tutorial Page
-GET     /2torial                    controllers.Application.torial()
+GET     /2torial                    @controllers.Application.torial()
 
 
 # Map static resources from the /public folder to the /assets URL path
