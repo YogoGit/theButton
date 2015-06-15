@@ -13,19 +13,8 @@ public class UserInfo {
     @Column(name="username")
     private String username;
 
-    @Column(name="email")
-    private String email;
-
-    @Column(name="timePressed")
-    private int timePressed;
-
-    public int getTimePressed() {
-        return timePressed;
-    }
-
-    public void setTimePressed(int timePressed) {
-        this.timePressed = timePressed;
-    }
+    @Column(name="time_pressed")
+    private Integer timePressed;
 
     public String getUsername() {
         return username;
@@ -35,13 +24,11 @@ public class UserInfo {
         this.username = username;
     }
 
-    public String getEmail() {
-        return email;
+    public Integer getTimePressed() {
+        return timePressed;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setTimePressed(Integer timePressed) {
+        this.timePressed = timePressed;
     }
-
-
 }

@@ -8,17 +8,6 @@ public class LoginInfo {
     @MaxLength(value = 255)
     private String username;
 
-    @MaxLength(value = 255)
-    private String email;
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getUsername() {
         return username;
     }
