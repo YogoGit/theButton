@@ -8,7 +8,6 @@ public class LoginInfo {
     @MaxLength(value = 255)
     private String username;
 
-    @Required(message="Email is required to login")
     @MaxLength(value = 255)
     private String email;
 
