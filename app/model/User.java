@@ -5,11 +5,11 @@ import play.data.validation.Constraints.MaxLength;
 
 public class User {
 
-    @Required(message="Required")
+    @Required(message="Username is Required to create an account")
     @MaxLength(value = 255)
     private String username;
 
-    @Required(message="Required")
+    @Required(message="Email is Required to create an account")
     @MaxLength(value = 255)
     private String email;
 
