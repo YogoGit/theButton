@@ -1,16 +1,14 @@
 @(title: String, nav1: String, nav2: String)(body: Html)
 @implicitFieldConstructor = @{ helper.FieldConstructor(twitterBootstrapInput.render) }
 
-
-@main(title){
+@main(title) {
   <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container-fluid">
-                <a id="titleLink" class="brand" href="/@routes.Application.torial()">@nav1.toUpperCase</a>
-                <a id="titleLink" class="brand" href="/@routes.Application.theButton()">@nav2.toUpperCase</a>
+                <a id="titleLink" class="brand" href="@routes.Application.torial()">@nav1.toUpperCase</a>
+                <a id="titleLink" class="brand" href="@routes.Application.theButton()">@nav2.toUpperCase</a>
             </div>
         </div>
   </div>
-
   @body
 }

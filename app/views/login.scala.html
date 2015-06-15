@@ -1,34 +1,22 @@
-@(posted: String="",form:  play.data.Form[model.LoginInfo])
+@(form:  play.data.Form[model.LoginInfo])
 @implicitFieldConstructor = @{ helper.FieldConstructor(twitterBootstrapInput.render) }
 
-
 @import helper.inputText
-@import helper.inputPassword
 
 @main("login"){
-
-@posted
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/login.css")">
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-md-4 col-md-offset-4">
       <h1 class="text-center login-title">Sign in to continue to The Button</h1>
        <div class="account-wall">
-       <!--  might need to change the arguments for this form? -->
         @helper.form(action = routes.Login.authenticate(), 'class -> "well form-horizontal") {
-
-        <!-- input helpers, the email and password fields which use the passed in form class and play helpers-->
            <div class="panel-body">
-                      @helper.inputText(field = form("username"), '_label -> "username")
-                 @*   @helper.inputText(field = form("email"), '_label -> "email")   *@
+                 @inputText(field = form("username"), '_label -> "username")
             </div>
             <div class= "controls">
-            <button class="btn btn-primary" type="submit">Sign in</button>
+                <button class="btn btn-primary" type="submit">Sign in</button>
             </div>
-
-<!--          <label class="checkbox pull-left"> <input type="checkbox"
-              value="remember-me"> Remember me
-            </label>
--->
         }
        </div>
       <a href="@routes.CreateAccount.add()" class="text-center new-account">Create an account </a>

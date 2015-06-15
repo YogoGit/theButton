@@ -2,6 +2,9 @@
 @implicitFieldConstructor = @{ helper.FieldConstructor(twitterBootstrapInput.render) }
 
 @navBar("The Button", nav1, nav2) {
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/flipclock.css")">
+    <script src="@routes.Assets.at("javascripts/index.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/flipclock.min.js")" type="text/javascript"></script>
     <div class="clock" style="margin:2em;"></div>
     <div class="container">
             <div class="controls">
@@ -12,11 +15,6 @@
     <script type="text/javascript">
         var clock;
         var maxTime = 600;
-
-/*         document.getElementById('button').clicked == true) {
-            clock.setTime(600);
-            alert(button was clicked);
-          }; */
 
         $(document).ready(function() {
             // Instantiatande a counter, figure out how to do dynamic stuff with reseting the clock for everyone
@@ -29,7 +27,7 @@
 
         function resetClock() {
             clock.setTime(600);
-            }
-    </script>
+        }
 
+    </script>
 }
