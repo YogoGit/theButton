@@ -13,6 +13,16 @@ public class User {
     @MaxLength(value = 255)
     private String email;
 
+    private int timePressed;
+
+    public int getTimePressed() {
+        return timePressed;
+    }
+
+    public void setTimePressed(int timePressed) {
+        this.timePressed = timePressed;
+    }
+
     public String getUsername() {
         return username;
     }

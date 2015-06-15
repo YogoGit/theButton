@@ -16,6 +16,17 @@ public class UserInfo {
     @Column(name="email")
     private String email;
 
+    @Column(name="timePressed")
+    private int timePressed;
+
+    public int getTimePressed() {
+        return timePressed;
+    }
+
+    public void setTimePressed(int timePressed) {
+        this.timePressed = timePressed;
+    }
+
     public String getUsername() {
         return username;
     }
