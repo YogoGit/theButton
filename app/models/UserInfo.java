@@ -15,8 +15,6 @@ public class UserInfo {
     @Size(min = 3, max = 20)
     private String username;
 
-    @Column(name = "time_pressed")
-    private Integer timePressed;
 
     public String getUsername() {
         return username;
@@ -24,13 +22,5 @@ public class UserInfo {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public Integer getTimePressed() {
-        return timePressed;
-    }
-
-    public void setTimePressed(Integer timePressed) {
-        this.timePressed = timePressed;
     }
 }
