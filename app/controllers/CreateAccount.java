@@ -33,7 +33,7 @@ public class CreateAccount extends Controller {
             return badRequest(createAccount.render(form));
         }
         User user = form.get();
-        if (userService.checkUsernameExists(user.getUsername())) {
+        if (userService.userExists(user.getUsername())) {
             log.info("username '{}' already exists, can't create account", user.getUsername());
             form.reject("username","That username already exists, please enter a different username");
             return badRequest(createAccount.render(form));

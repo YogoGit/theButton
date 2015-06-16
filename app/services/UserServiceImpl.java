@@ -1,6 +1,11 @@
 package services;
 
+import controllers.CreateAccount;
+
 import models.UserInfo;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import model.User;
 import org.springframework.stereotype.Service;
@@ -13,6 +18,7 @@ import javax.persistence.PersistenceContext;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @PersistenceContext
     private EntityManager em;
@@ -26,10 +32,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean checkUsernameExists(String username) {
+    public boolean userExists(String username) {
+        UserInfo ui = getUserData(username);
+        return (ui != null);
+    }
+
+    @Override
+    public UserInfo getUserData(String username) {
         List<UserInfo> ui = em.createQuery("SELECT a FROM UserInfo a WHERE a.username = :username", UserInfo.class)
-                              .setParameter("username", username)
-                              .getResultList();
-        return (ui.size() > 0);
+                        .setParameter("username", username)
+                        .getResultList();
+        if (ui.size() > 0) {
+            return ui.get(0);
+        }
+        log.info("Trying to getUserInfo for a {} that doesn't exist ", username);
+        return null;
+
     }
 }
