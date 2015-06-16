@@ -1,18 +1,17 @@
 package controllers;
 
 import services.UserService;
-import views.html.createAccount;
 
 import model.User;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+
+import views.html.createAccount;
 
 @org.springframework.stereotype.Controller
 public class CreateAccount extends Controller {
@@ -35,7 +34,7 @@ public class CreateAccount extends Controller {
         User user = form.get();
         if (userService.userExists(user.getUsername())) {
             log.info("username '{}' already exists, can't create account", user.getUsername());
-            form.reject("username","That username already exists, please enter a different username");
+            form.reject("username", "That username already exists, please enter a different username");
             return badRequest(createAccount.render(form));
         }
         log.info("adding {}", user.getUsername());

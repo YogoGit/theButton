@@ -1,13 +1,10 @@
 package services;
 
-import controllers.CreateAccount;
-
 import models.UserInfo;
 
+import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,8 +37,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserInfo getUserData(String username) {
         List<UserInfo> ui = em.createQuery("SELECT a FROM UserInfo a WHERE a.username = :username", UserInfo.class)
-                        .setParameter("username", username)
-                        .getResultList();
+                              .setParameter("username", username)
+                              .getResultList();
         if (ui.size() > 0) {
             return ui.get(0);
         }

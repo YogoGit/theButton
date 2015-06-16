@@ -6,16 +6,14 @@ import configs.AppConfig;
 import configs.TestDataConfig;
 
 import model.User;
-
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
-import services.UserService;
-
-
-@ContextConfiguration(classes={AppConfig.class, TestDataConfig.class})
+@ContextConfiguration(classes = {
+    AppConfig.class, TestDataConfig.class
+})
 public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Autowired
@@ -31,12 +29,12 @@ public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTes
         userService.addUser(user0);
         assertThat(userService.userExists(user0.getUsername())).isEqualTo(true);
 
-        //a username > 20 chars should not be added to the database
+        // a username > 20 chars should not be added to the database
         user1.setUsername("user1WhichIsLongerThan20Characters");
         userService.addUser(user1);
         assertThat(userService.userExists(user1.getUsername())).isEqualTo(false);
 
-        //a username < 3 chars should not be added to the database
+        // a username < 3 chars should not be added to the database
         user2.setUsername("u2");
         userService.addUser(user2);
         assertThat(userService.userExists(user2.getUsername())).isEqualTo(false);

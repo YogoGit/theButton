@@ -7,15 +7,15 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class UserInfo {
 
     @Id
-    @Column(name="username")
-    @Size(min=3,max=20)
+    @Column(name = "username")
+    @Size(min = 3, max = 20)
     private String username;
 
-    @Column(name="time_pressed")
+    @Column(name = "time_pressed")
     private Integer timePressed;
 
     public String getUsername() {

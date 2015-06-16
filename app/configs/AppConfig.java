@@ -9,8 +9,7 @@ import org.springframework.context.annotation.Configuration;
     value = {
         "controllers",
         "services",
-    }
-)
+    })
 public class AppConfig {
 
 }
