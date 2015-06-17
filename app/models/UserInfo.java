@@ -15,7 +15,6 @@ public class UserInfo {
     @Size(min = 3, max = 20)
     private String username;
 
-
     public String getUsername() {
         return username;
     }
