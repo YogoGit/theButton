@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public boolean addUser(User user) {
-        if (!userExists(user.getUsername()) && user.getUsername() != null) {
+        if (user != null && !userExists(user.getUsername()) && user.getUsername() != null) {
             UserInfo newUser = new UserInfo();
             newUser.setUsername(user.getUsername());
             em.persist(newUser);
