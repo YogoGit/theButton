@@ -6,7 +6,7 @@ import model.User;
 
 public interface UserService {
 
-    void addUser(User task);
+    boolean addUser(User task);
 
     boolean userExists(String username);
 

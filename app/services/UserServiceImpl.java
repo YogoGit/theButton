@@ -22,10 +22,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void addUser(User user) {
-        UserInfo newUser = new UserInfo();
-        newUser.setUsername(user.getUsername());
-        em.persist(newUser);
+    public boolean addUser(User user) {
+        if (!userExists(user.getUsername()) && user.getUsername() != null) {
+            UserInfo newUser = new UserInfo();
+            newUser.setUsername(user.getUsername());
+            em.persist(newUser);
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -44,6 +48,5 @@ public class UserServiceImpl implements UserService {
         }
         log.info("Trying to getUserInfo for a {} that doesn't exist ", username);
         return null;
-
     }
 }
