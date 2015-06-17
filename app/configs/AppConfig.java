@@ -3,7 +3,7 @@ package configs;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-// spring config file, finds these annotations and uses the beans that are defined.
+//designates packages that spring is interested in.  Annotations in said classes allow it to be injected into or injected.
 @Configuration
 @ComponentScan(
     value = {
