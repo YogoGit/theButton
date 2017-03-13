@@ -14,7 +14,9 @@ import views.html.login;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@org.springframework.stereotype.Controller
+import javax.inject.Named;
+
+@Named
 public class Application extends Controller {
     private static final String nav1 = "tutorial";
     private static final String nav2 = "the button";

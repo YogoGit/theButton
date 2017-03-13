@@ -9,6 +9,7 @@ libraryDependencies ++= Seq(
   cache,
   javaJdbc,
   javaWs,
+  "javax.inject" % "javax.inject" % "1",
   "mysql" % "mysql-connector-java" % "5.1.35",
   "org.hibernate" % "hibernate-entitymanager" % "4.3.6.Final",
   "org.springframework" % "spring-aop"        % "4.1.1.RELEASE",

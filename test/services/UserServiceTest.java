@@ -7,16 +7,17 @@ import configs.TestDataConfig;
 
 import model.User;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
+
+import javax.inject.Inject;
 
 @ContextConfiguration(classes = {
     AppConfig.class, TestDataConfig.class
 })
 public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTests {
 
-    @Autowired
+    @Inject
     private UserService userService;
 
     @Test

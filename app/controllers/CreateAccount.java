@@ -5,7 +5,6 @@ import services.UserService;
 import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import play.data.Form;
 import play.mvc.Controller;
@@ -13,11 +12,14 @@ import play.mvc.Result;
 
 import views.html.createAccount;
 
-@org.springframework.stereotype.Controller
+import javax.inject.Inject;
+import javax.inject.Named;
+
+@Named
 public class CreateAccount extends Controller {
     private static final Logger log = LoggerFactory.getLogger(CreateAccount.class);
 
-    @Autowired
+    @Inject
     private UserService userService;
 
     public Result add() {
