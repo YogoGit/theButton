@@ -1,6 +1,9 @@
 package services;
 
-import static org.fest.assertions.Assertions.assertThat;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import configs.AppConfig;
 import configs.TestDataConfig;
@@ -25,7 +28,7 @@ public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTes
         User user = new User();
         user.setUsername("user0");
         userService.addUser(user);
-        assertThat(userService.userExists(user.getUsername())).isEqualTo(true);
+        assertTrue(userService.userExists(user.getUsername()));
     }
 
     // the database does not allow data that is longer than 20 characters to be added
@@ -33,9 +36,9 @@ public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTes
     public void addUsernameLong() {
         User user = new User();
         user.setUsername("user1WhichIsLongerThan20Characters");
-        assertThat(user.getUsername().length()).isGreaterThan(20);
+        assertTrue(user.getUsername().length() > 20);
         userService.addUser(user);
-        assertThat(userService.userExists(user.getUsername())).isEqualTo(false);
+        assertFalse(userService.userExists(user.getUsername()));
     }
 
     // the database does not allow data that is shorter than 3 characters to be added
@@ -43,30 +46,30 @@ public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTes
     public void addUsernameShort() {
         User user = new User();
         user.setUsername("u2");
-        assertThat(user.getUsername().length()).isLessThan(3);
+        assertTrue(user.getUsername().length() < 3);
         userService.addUser(user);
-        assertThat(userService.userExists(user.getUsername())).isEqualTo(false);
+        assertFalse(userService.userExists(user.getUsername()));
     }
 
     @Test
     public void addNullUser() {
-        assertThat(userService.addUser(null)).isEqualTo(false);
+        assertFalse(userService.addUser(null));
     }
 
     @Test
     public void notInitializedUser() {
         User user = new User();
-        assertThat(userService.addUser(user)).isEqualTo(false);
+        assertFalse(userService.addUser(user));
     }
 
     @Test
     public void nullUserExists() {
-        assertThat(userService.userExists(null)).isEqualTo(false);
+        assertFalse(userService.userExists(null));
     }
 
     @Test
     public void userDoesNotExist() {
-        assertThat(userService.userExists("user")).isEqualTo(false);
+        assertFalse(userService.userExists("user"));
     }
 
     @Test
@@ -74,22 +77,22 @@ public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTes
         User user0 = new User();
         user0.setUsername("user0");
         userService.addUser(user0);
-        assertThat(userService.userExists(user0.getUsername())).isEqualTo(true);
+        assertTrue(userService.userExists(user0.getUsername()));
 
         User user1 = new User();
         user1.setUsername("user1");
         userService.addUser(user1);
-        assertThat(userService.userExists(user1.getUsername())).isEqualTo(true);
+        assertTrue(userService.userExists(user1.getUsername()));
     }
 
     @Test
     public void userDataNotExist() {
-        assertThat(userService.getUserData("BobMarley")).isNull();
+        assertNull(userService.getUserData("BobMarley"));
     }
 
     @Test
     public void nullUserDatat() {
-        assertThat(userService.getUserData(null)).isNull();
+        assertNull(userService.getUserData(null));
     }
 
     @Test
@@ -97,6 +100,6 @@ public class UserServiceTest extends AbstractTransactionalJUnit4SpringContextTes
         User user = new User();
         user.setUsername("user0");
         userService.addUser(user);
-        assertThat(userService.getUserData(user.getUsername())).isNotNull();
+        assertNotNull(userService.getUserData(user.getUsername()));
     }
 }
