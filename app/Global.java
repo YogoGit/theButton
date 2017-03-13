@@ -14,6 +14,7 @@ public class Global extends GlobalSettings {
     // designates the config files to be used.
     @Override
     public void onStart(Application app) {
+        super.onStart(app);
         appContext = new AnnotationConfigApplicationContext(AppConfig.class, DataConfig.class);
     }
 
