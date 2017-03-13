@@ -18,11 +18,11 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 public class DataConfig {
 
-    // this creates the Entity manager to manage our Beans?
+    // this creates the Entity manager to manage our Beans
     @Bean
     public EntityManagerFactory entityManagerFactory() {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setShowSql(true);
+        vendorAdapter.setShowSql(false);
         vendorAdapter.setGenerateDdl(true);
         LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactory.setPackagesToScan("models");
@@ -34,8 +34,7 @@ public class DataConfig {
 
     @Bean
     public PlatformTransactionManager transactionManager() {
-        JpaTransactionManager transactionManager = new JpaTransactionManager(entityManagerFactory());
-        return transactionManager;
+        return new JpaTransactionManager(entityManagerFactory());
     }
 
     // this configures the data source.
@@ -48,5 +47,4 @@ public class DataConfig {
         dataSource.setPassword(Play.application().configuration().getString("db.default.password"));
         return dataSource;
     }
-
 }

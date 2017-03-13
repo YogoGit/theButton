@@ -43,5 +43,4 @@ public class CreateAccount extends Controller {
         userService.addUser(user);
         return redirect(controllers.routes.Login.login());
     }
-
 }

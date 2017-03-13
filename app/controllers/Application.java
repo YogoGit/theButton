@@ -18,9 +18,10 @@ import javax.inject.Named;
 
 @Named
 public class Application extends Controller {
+    private static final Logger log = LoggerFactory.getLogger(Application.class);
+
     private static final String nav1 = "tutorial";
     private static final String nav2 = "the button";
-    private static final Logger log = LoggerFactory.getLogger(Application.class);
 
     public Result torial() {
         String user = session("username");

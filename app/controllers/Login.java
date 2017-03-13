@@ -19,7 +19,6 @@ import javax.inject.Named;
 
 @Named
 public class Login extends Controller {
-
     private static final Logger log = LoggerFactory.getLogger(Login.class);
 
     @Inject
