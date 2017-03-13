@@ -24,3 +24,6 @@ libraryDependencies ++= Seq(
   "javax.el" % "el-api" % "2.2" % "test",
   "org.glassfish.web" % "el-impl" % "2.2" % "test"
 )
+
+// More verbose JUnit test output
+testOptions += Tests.Argument(TestFrameworks.JUnit, "-v")
